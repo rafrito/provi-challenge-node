@@ -1,0 +1,33 @@
+{
+  "name": "provi-challenge-node",
+  "version": "1.0.0",
+  "description": "This repository is a solution to the challenge proposed in https://github.com/provicapital/challenge_node",
+  "main": "app.js",
+  "scripts": {
+    "initDB": "node database/init.js",
+    "start": "node app.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafrito/provi-challenge-node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafrito/provi-challenge-node/issues"
+  },
+  "homepage": "https://github.com/rafrito/provi-challenge-node#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "email-validator": "^2.0.4",
+    "express": "^4.17.1",
+    "graphql": "^15.3.0",
+    "jest": "^26.2.2",
+    "jsonwebtoken": "^8.5.1",
+    "mailgun-js": "^0.22.0",
+    "pg": "^8.3.0",
+    "request-promise": "^4.2.6"
+  }
+}
