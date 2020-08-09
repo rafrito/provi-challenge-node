@@ -8,9 +8,9 @@ This project uses **Postogresql 12**, **node 14** and **npm 6**. You should have
 
 ## Get started
 
-Create an empty Postgresql database and write the connection credentials to the file **.env**. After that you should run `npm install` to install dependencies, then `npm run init` to create the underline database structure.
+Create an empty Postgresql database and write the connection credentials to the file **.env**. After that you should run `npm install` to install dependencies, then `npm run initDB` to create the underline database structure.
 
-The database has two tables: **users** - which persists user information - and **loan_request_flux** - that has sequence of endpoints that the user should access in order. When you `run init`, a default flux is created. You can also write a new **flux** column. The last such column will serve as a default flux for new users.
+The database has two tables: **users** - which persists user information - and **loan_request_flux** - that has sequence of endpoints that the user should access in order. When you `run initDB`, a default flux is created. You can also write a new **flux** column. The last such column will serve as a default flux for new users.
 
 Now you can run `npm start` to begin our application. Make a visit to **GET /** to start the loan request process. More precisely you should:
 
