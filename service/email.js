@@ -1,3 +1,4 @@
+require('dotenv/config');
 const apiKey = process.env.MAILAPIKEY;
 const domain = process.env.MAILDOMAIN;
 
