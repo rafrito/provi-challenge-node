@@ -33,7 +33,7 @@ signup.createUser = async (token) => {
     return ans
 };
 
-signup.sendConfirmationMail = (email, password) => {
+signup.sendConfirmationMail = async (email, password) => {
     const ans = {};
     if (!emailUtils.validate(email)) {
         ans.body = {
@@ -46,7 +46,7 @@ signup.sendConfirmationMail = (email, password) => {
 
     const token = auth.genEmailToken(email, password);
     try {
-        emailUtils.sendMail(email, token)
+        await emailUtils.sendMail(email, token)
         ans.body = {
             success: true,
             message: 'In instants you will receive a verification email.'

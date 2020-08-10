@@ -3,7 +3,7 @@ const signup = require('../service/signup');
 
 const router = new Router();
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     if (!(req.body.email && req.body.password)) {
         res.statusCode = 400,
             res.json({
@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
     };
 
     try {
-        const ans = signup.sendConfirmationMail(req.body.email, req.body.password);
+        const ans = await signup.sendConfirmationMail(req.body.email, req.body.password);
         res.json(ans.body);
         res.statusCode = ans.statusCode;
     }

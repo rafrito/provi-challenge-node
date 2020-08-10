@@ -10,8 +10,8 @@ const emailUtils = {};
 
 emailUtils.validate = (email) => validator.validate(email);
 
-emailUtils.sendMail = (userEmail, token) => {
-    mailgun.messages().send({
+emailUtils.sendMail = async (userEmail, token) => {
+    await mailgun.messages().send({
             from: `provi-challenge@${domain}`,
             to: userEmail,
             subject: 'Welcome to Provi-Challenge',
