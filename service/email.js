@@ -1,5 +1,5 @@
-const apiKey = '433d3a0f32a7d5dceb6a043da0a65a3e-f7d0b107-75d38683';
-const domain = 'sandbox182d33282ee142c1bef7bff1388b81b2.mailgun.org';
+const apiKey = process.env.MAILAPIKEY;
+const domain = process.env.MAILDOMAIN;
 
 const validator = require('email-validator');
 const mailgun = require('mailgun-js')({ domain, apiKey });
