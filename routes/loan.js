@@ -6,7 +6,7 @@ const { dataFormat, compareKeys } = require("./endpointFormat");
 const router = new Router();
 
 // body integrity middleware
-router.use((req, res, next) => {
+router.use(async (req, res, next) => {
     if (!req.body.token || !req.body.data) {
         res.statusCode = 400;
         res.json({
@@ -30,7 +30,7 @@ router.use((req, res, next) => {
         const decoded = auth.checkLoginToken(req.body.token);
         req.user = { email: decoded.email };
 
-        loan.isValidEndpoint(req.originalUrl, req.user.email)
+        await loan.isValidEndpoint(req.originalUrl, req.user.email)
             .then(end => {
                 if (!end.valid) {
                     res.statusCode = 400;
