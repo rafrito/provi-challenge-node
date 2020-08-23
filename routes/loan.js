@@ -13,7 +13,7 @@ router.use((req, res, next) => {
             success: false,
             message: 'You must pass token and data in the body request.'
         });
-        res.end()
+        return res.end()
     }
 
     if (!compareKeys(req.body.data, req.originalUrl)) {
@@ -23,7 +23,7 @@ router.use((req, res, next) => {
                 message: 'You must pass body.data as specified.',
                 expectedBody: dataFormat(req.originalUrl)
             });
-        res.end()
+        return res.end()
     }
 
     try {
@@ -40,7 +40,7 @@ router.use((req, res, next) => {
                         nextEndpoint: end.nextEndpoint,
                         expectedBody: dataFormat(end.nextEndpoint)
                     });
-                    res.end()
+                    return res.end()
                 }
             })
         next()
@@ -51,7 +51,7 @@ router.use((req, res, next) => {
             message: 'Invalid auth token. It may have expired. Login to get a valid auth token.'
         });
         res.statusCode = 401;
-        res.end()
+        return res.end()
     }
 });
 
