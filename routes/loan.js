@@ -30,19 +30,19 @@ router.use(async (req, res, next) => {
         const decoded = auth.checkLoginToken(req.body.token);
         req.user = { email: decoded.email };
 
-        await loan.isValidEndpoint(req.originalUrl, req.user.email)
-            .then(end => {
-                if (!end.valid) {
-                    res.statusCode = 400;
-                    res.json({
-                        success: false,
-                        message: 'The order of the endpoints is imperative. You can repost to the last endpoint or go to the next only.',
-                        nextEndpoint: end.nextEndpoint,
-                        expectedBody: dataFormat(end.nextEndpoint)
-                    });
-                    return res.end()
-                }
-            })
+        const end = await loan.isValidEndpoint(req.originalUrl, req.user.email);
+
+        if (!end.valid) {
+            res.statusCode = 400;
+            res.json({
+                success: false,
+                message: 'The order of the endpoints is imperative. You can repost to the last endpoint or go to the next only.',
+                nextEndpoint: end.nextEndpoint,
+                expectedBody: dataFormat(end.nextEndpoint)
+            });
+            return res.end()
+        }
+
         next()
     }
     catch (err) {
